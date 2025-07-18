@@ -21,8 +21,6 @@ import {
 export class DropzoneDirective implements OnInit, OnDestroy {
   readonly dragDropService = inject(DragDropService);
 
-  @Input() dragOverClass = 'drag-over';
-  @Input() dragHintClass = 'drag-hint';
   @Input() scopes: string[] = [];
   @Input() disabled = false;
 

@@ -1,59 +1,43 @@
-# OwnDropzone
+# Angular CDK Dropzone POC
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+A Proof of Concept implementation for custom dropzone functionality using Angular CDK Drag and Drop. This project demonstrates how to create dropzones that work independently of Angular CDK's standard drop lists.
 
-## Development server
+## Purpose
 
-To start a local development server, run:
+This POC addresses limitations in Angular CDK's standard drag-drop implementation by providing:
 
-```bash
-ng serve
+- **Custom dropzones** that aren't tied to CDK drop lists
+- **Scope-based dropping** for targeted drag operations
+- **Service-based architecture** for managing multiple dropzones
+
+## 📁 Project Structure
+
+```
+src/app/
+├── directives/
+│   ├── dropzone.directive.ts          # Dropzone directive
+│   ├── drag-register.directive.ts     # Drag registration directive
+├── services/
+│   ├── drag-drop.service.ts           # Dropzone management service
+└── app.component.*                    # Demo implementation
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Usage
 
-## Code scaffolding
+1. **Add the dropzone directive** to any element:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```html
+<div appDropzone (drop)="onDrop($event)">Drop items here</div>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. **Register draggable items** with the drag directive:
 
-```bash
-ng generate --help
+```html
+<div cdkDrag appDragRegister [cdkDragData]="myData">Draggable Item</div>
 ```
 
-## Building
+## Currently missing
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Snap back of draggable items without `cdkDropList [cdkDropListSortingDisabled]="true"`
+- Enter and leave events for the dropzone
+- Hint and over css classes for the dropzone
