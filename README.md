@@ -38,6 +38,5 @@ src/app/
 
 ## Currently missing
 
-- Snap back of draggable items without `cdkDropList [cdkDropListSortingDisabled]="true"`
 - Enter and leave events for the dropzone
 - Hint and over css classes for the dropzone

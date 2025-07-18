@@ -32,7 +32,9 @@ export class DragDropService {
     this.registeredDropZones.delete(dropzoneId);
   }
 
-  emitDrop(scope: string | undefined, event: CdkDragEnd): void {
+  emitDrop(scope: string | undefined, event: CdkDragEnd): boolean {
+    let wasDroppedInValidZone = false;
+
     for (const zone of this.registeredDropZones.values()) {
       const isMatchingScope =
         !scope || zone.scopes.length === 0 || zone.scopes.includes(scope);
@@ -44,8 +46,11 @@ export class DragDropService {
           event.dropPoint.y <= zone.rect.bottom;
         if (isInZone) {
           zone.$onDrop?.next({ data: event.source?.data });
+          wasDroppedInValidZone = true;
         }
       }
     }
+
+    return wasDroppedInValidZone;
   }
 }

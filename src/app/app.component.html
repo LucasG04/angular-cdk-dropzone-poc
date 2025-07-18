@@ -2,7 +2,7 @@
   <!-- Draggable List -->
   <div class="draggable-list">
     <h3>📦 Draggable Items</h3>
-    <ul cdkDropList [cdkDropListSortingDisabled]="true">
+    <ul>
       @for (item of items; track item) {
       <li cdkDrag appDragRegister [cdkDragData]="item">
         <!-- <div class="example-custom-placeholder" *cdkDragPreview>
