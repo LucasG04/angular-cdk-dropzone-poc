@@ -10,7 +10,7 @@ This POC addresses limitations in Angular CDK's standard drag-drop implementatio
 - **Scope-based dropping** for targeted drag operations
 - **Service-based architecture** for managing multiple dropzones
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/app/
