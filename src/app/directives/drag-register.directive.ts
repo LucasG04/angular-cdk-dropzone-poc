@@ -6,21 +6,21 @@ import {
   ElementRef,
 } from '@angular/core';
 import { DragDropService } from '../services/drag-drop.service';
-import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Directive({
-  selector: '[appDragRegister]',
+  selector: '[appDragHandler]',
 })
-export class DragRegisterDirective {
+export class DragHandlerDirective {
   readonly dragDropService = inject(DragDropService);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
-  dragScope = input<string>();
+  scope = input<string>(undefined, { alias: 'appDragScope' });
 
   @HostListener('cdkDragEnded', ['$event'])
   onDragEnd(event: CdkDragEnd): void {
     const wasDroppedInValidZone = this.dragDropService.emitDrop(
-      this.dragScope(),
+      this.scope(),
       event
     );
 

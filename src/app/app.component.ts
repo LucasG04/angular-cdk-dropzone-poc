@@ -1,19 +1,11 @@
-import {
-  DragDropModule,
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-  CdkDrag,
-  CdkDropList,
-} from '@angular/cdk/drag-drop';
+import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { DropzoneDirective } from './directives/dropzone.directive';
-import { DragRegisterDirective } from './directives/drag-register.directive';
+import { DragHandlerDirective } from './directives/drag-register.directive';
 
 @Component({
   selector: 'app-root',
-  imports: [DragDropModule, DropzoneDirective, DragRegisterDirective],
+  imports: [DragDropModule, DropzoneDirective, DragHandlerDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

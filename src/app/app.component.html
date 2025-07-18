@@ -4,7 +4,7 @@
     <h3>📦 Draggable Items</h3>
     <ul>
       @for (item of items; track item) {
-      <li cdkDrag appDragRegister [cdkDragData]="item">
+      <li cdkDrag appDragHandler [cdkDragData]="item">
         <!-- <div class="example-custom-placeholder" *cdkDragPreview>
           {{ item }}
         </div> -->
