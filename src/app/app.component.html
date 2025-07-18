@@ -4,17 +4,10 @@
     <h3>📦 Draggable Items</h3>
     <ul cdkDropList [cdkDropListSortingDisabled]="true">
       @for (item of items; track item) {
-      <li
-        cdkDrag
-        appDragRegister
-        [cdkDragData]="item"
-        (cdkDragStarted)="onDragStart($event, item)"
-        (cdkDragEnded)="onDragEnd($event, item)"
-        [class.dragging]="isDragging"
-      >
-        <div class="example-custom-placeholder" *cdkDragPreview>
+      <li cdkDrag appDragRegister [cdkDragData]="item">
+        <!-- <div class="example-custom-placeholder" *cdkDragPreview>
           {{ item }}
-        </div>
+        </div> -->
         {{ item }}
       </li>
       }
@@ -22,20 +15,8 @@
   </div>
 
   <!-- Dropzone 1 -->
-  <div
-    class="dropzone zone1"
-    [class.empty]="zone1Items.length === 0"
-    appDropzone
-    (dragEnter)="onDragEnter($event, 'zone1')"
-    (dragLeave)="onDragLeave($event, 'zone1')"
-    (drop)="onDrop($event, 'zone1')"
-  >
+  <div class="dropzone zone1" appDropzone (drop)="onDrop($event, 'zone1')">
     <h3>🎯 Dropzone 1</h3>
-    <ul>
-      @for (item of zone1Items; track item) {
-      <li>{{ item }}</li>
-      }
-    </ul>
   </div>
 
   <!-- Dropzone 2 -->
@@ -44,15 +25,8 @@
     appDropzone
     dragOverClass="drag-over"
     dragHintClass="drag-hint"
-    (dragEnter)="onDragEnter($event, 'zone2')"
-    (dragLeave)="onDragLeave($event, 'zone2')"
     (drop)="onDrop($event, 'zone2')"
   >
     <h3>🎯 Dropzone 2</h3>
-    <ul>
-      @for (item of zone2Items; track item) {
-      <li>{{ item }}</li>
-      }
-    </ul>
   </div>
 </div>
