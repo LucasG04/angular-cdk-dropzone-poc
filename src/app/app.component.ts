@@ -1,7 +1,7 @@
 import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 import { DropzoneDirective } from './directives/dropzone.directive';
-import { DragHandlerDirective } from './directives/drag-register.directive';
+import { DragHandlerDirective } from './directives/drag-handler.directive';
 
 @Component({
   selector: 'app-root',

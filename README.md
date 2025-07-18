@@ -16,7 +16,7 @@ This POC addresses limitations in Angular CDK's standard drag-drop implementatio
 src/app/
 ├── directives/
 │   ├── dropzone.directive.ts          # Dropzone directive
-│   ├── drag-register.directive.ts     # Drag registration directive
+│   ├── drag-handler.directive.ts      # Drag handler directive
 ├── services/
 │   ├── drag-drop.service.ts           # Dropzone management service
 └── app.component.*                    # Demo implementation
@@ -33,7 +33,7 @@ src/app/
 2. **Register draggable items** with the drag directive:
 
 ```html
-<div cdkDrag appDragRegister [cdkDragData]="myData">Draggable Item</div>
+<div cdkDrag appDragHandler [cdkDragData]="myData">Draggable Item</div>
 ```
 
 ## Currently missing
