@@ -1,5 +1,5 @@
 {
-  "name": "own-dropzone",
+  "name": "angular-cdk-dropzone-poc",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
