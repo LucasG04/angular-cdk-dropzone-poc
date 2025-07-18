@@ -2,16 +2,11 @@
   <!-- Draggable List -->
   <div class="draggable-list">
     <h3>📦 Draggable Items</h3>
-    <ul
-      [id]="'d1'"
-      cdkDropList
-      [cdkDropListData]="items"
-      [cdkDropListSortingDisabled]="true"
-      [cdkDropListConnectedTo]="['d2', 'd3']"
-    >
+    <ul cdkDropList [cdkDropListSortingDisabled]="true">
       @for (item of items; track item) {
       <li
         cdkDrag
+        appDragRegister
         [cdkDragData]="item"
         (cdkDragStarted)="onDragStart($event, item)"
         (cdkDragEnded)="onDragEnd($event, item)"
@@ -28,17 +23,12 @@
 
   <!-- Dropzone 1 -->
   <div
-    [id]="'d2'"
     class="dropzone zone1"
     [class.empty]="zone1Items.length === 0"
-    cdkDropList
-    [cdkDropListData]="zone1Items"
-    [cdkDropListConnectedTo]="['d1']"
-    [cdkDropListSortingDisabled]="true"
-    [cdkDropListEnterPredicate]="isMoverZone"
-    (cdkDropListEntered)="onDragEnter($event, 'zone1')"
-    (cdkDropListExited)="onDragLeave($event, 'zone1')"
-    (cdkDropListDropped)="onDrop($event, 'zone1')"
+    appDropzone
+    (dragEnter)="onDragEnter($event, 'zone1')"
+    (dragLeave)="onDragLeave($event, 'zone1')"
+    (drop)="onDrop($event, 'zone1')"
   >
     <h3>🎯 Dropzone 1</h3>
     <ul>
@@ -50,21 +40,13 @@
 
   <!-- Dropzone 2 -->
   <div
-    [id]="'d3'"
     class="dropzone zone2"
-    [class.empty]="zone2Items.length === 0"
     appDropzone
-    cdkDropList
-    [cdkDropListData]="zone2Items"
-    [cdkDropListConnectedTo]="['d1']"
-    [cdkDropListSortingDisabled]="true"
-    [cdkDropListEnterPredicate]="isMoverZone"
     dragOverClass="drag-over"
     dragHintClass="drag-hint"
     (dragEnter)="onDragEnter($event, 'zone2')"
     (dragLeave)="onDragLeave($event, 'zone2')"
     (drop)="onDrop($event, 'zone2')"
-    (cdkDropListDropped)="onDrop($event, 'zone2')"
   >
     <h3>🎯 Dropzone 2</h3>
     <ul>
