@@ -8,10 +8,10 @@ import {
   OnDestroy,
   inject,
 } from '@angular/core';
-import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   DragDropService,
-  DropZoneRegistration,
+  DropZoneRegistration as DropzoneRegistration,
 } from '../services/drag-drop.service';
 
 @Directive({
@@ -26,24 +26,22 @@ export class DropzoneDirective implements OnInit, OnDestroy {
   @Input() scopes: string[] = [];
   @Input() disabled = false;
 
-  // @Output() dragEnter = new EventEmitter<any>();
-  // @Output() dragLeave = new EventEmitter<any>();
   @Output() drop = new EventEmitter<CdkDragDrop<any>>();
 
-  private dropZone!: DropZoneRegistration;
+  private dropzone!: DropzoneRegistration;
 
   constructor(private elementRef: ElementRef<HTMLElement>) {}
 
   ngOnInit(): void {
     this.elementRef.nativeElement.setAttribute('droppable', 'true');
-    this.dropZone = this.dragDropService.registerDropZone(
+    this.dropzone = this.dragDropService.registerDropZone(
       this.scopes,
       this.elementRef.nativeElement.getBoundingClientRect()
     );
-    this.dropZone.$onDrop.subscribe((event) => this.drop.emit(event.data));
+    this.dropzone.$onDrop.subscribe((event) => this.drop.emit(event.data));
   }
 
   ngOnDestroy(): void {
-    this.dragDropService.unregisterDropZone(this.dropZone.id);
+    this.dragDropService.unregisterDropZone(this.dropzone.id);
   }
 }

@@ -18,18 +18,18 @@ export class DragDropService {
 
   registerDropZone(scopes: string[], rect: DOMRect): DropZoneRegistration {
     const zoneId = crypto.randomUUID();
-    const dropZone: DropZoneRegistration = {
+    const dropzone: DropZoneRegistration = {
       id: zoneId,
       scopes,
       rect,
       $onDrop: new Subject<{ data: any }>(),
     };
-    this.registeredDropZones.set(zoneId, dropZone);
-    return dropZone;
+    this.registeredDropZones.set(zoneId, dropzone);
+    return dropzone;
   }
 
-  unregisterDropZone(dropZoneId: string) {
-    this.registeredDropZones.delete(dropZoneId);
+  unregisterDropZone(dropzoneId: string) {
+    this.registeredDropZones.delete(dropzoneId);
   }
 
   emitDrop(scope: string | undefined, event: CdkDragEnd): void {
